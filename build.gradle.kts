@@ -3,8 +3,10 @@ plugins {
     id("maven-publish")
 }
 
-group = "live.einfachgustaf"
-version = "1.0"
+allprojects {
+    group = "live.einfachgustaf"
+    version = "1.0"
+}
 
 repositories {
     mavenCentral()

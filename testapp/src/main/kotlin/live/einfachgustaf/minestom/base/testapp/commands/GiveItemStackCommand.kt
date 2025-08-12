@@ -6,6 +6,10 @@ import net.minestom.server.command.builder.Command
 import net.minestom.server.entity.Player
 import net.minestom.server.item.Material
 
+/**
+ * Command to give an item stack to a player.
+ * This command is used for testing purposes in the Minestom base application.
+ */
 class GiveItemStackCommand: Command("giveitemstack") {
 
     init {

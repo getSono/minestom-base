@@ -1,0 +1,45 @@
+package live.einfachgustaf.minestom.base.utils
+
+import net.minestom.server.MinecraftServer
+import net.minestom.server.coordinate.Pos
+import net.minestom.server.entity.Player
+import net.minestom.server.event.player.PlayerEntityInteractEvent
+import net.minestom.server.instance.Instance
+
+fun fakePlayer(name: String, instance: Instance, builder: FakePlayerBuilder.() -> Unit) {
+    FakePlayer.init()
+
+    FakePlayer.create(name) { fp ->
+        val dsl = FakePlayerBuilder(fp, instance)
+        dsl.builder()
+        fp.setInstance(instance, dsl.spawnPos)
+        fp.setAutoViewable(true)
+        dsl.registerClickHandler()
+    }
+}
+
+class FakePlayerBuilder(
+    private val fakePlayer: FakePlayer,
+    private val instance: Instance
+) {
+    var spawnPos: Pos = Pos(0.0, 42.0, 0.0)
+    private var clickHandler: ((Player) -> Unit)? = null
+
+    fun position(x: Double, y: Double, z: Double) {
+        spawnPos = Pos(x, y, z)
+    }
+
+    fun onClick(handler: (Player) -> Unit) {
+        clickHandler = handler
+    }
+
+    fun registerClickHandler() {
+        clickHandler?.let { handler ->
+            MinecraftServer.getGlobalEventHandler().addListener(PlayerEntityInteractEvent::class.java) { event ->
+                if (event.target == fakePlayer && event.hand == Player.Hand.MAIN) {
+                    handler(event.player)
+                }
+            }
+        }
+    }
+}

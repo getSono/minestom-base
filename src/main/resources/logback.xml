@@ -1,0 +1,16 @@
+<configuration>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>
+                %white(%d{HH:mm:ss.SSS}) [%thread] %highlight(%-5level){INFO=blue, WARN=yellow, ERROR=white bgBlue}- %blue(%class) - %msg%n
+            </pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+</configuration>

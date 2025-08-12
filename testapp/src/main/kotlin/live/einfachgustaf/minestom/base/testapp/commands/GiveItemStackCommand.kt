@@ -25,6 +25,9 @@ class GiveItemStackCommand: Command("giveitemstack") {
                 customName(Component.text("Shiny Diamonds")) // Set a custom name for the item
                 lore(listOf(Component.text("These diamonds are shiny!"))) // Set a lore for the item
             }
+
+            sender.inventory.addItemStack(stack)
+            sender.sendMessage(Component.text("You have been given 5 shiny diamonds!"))
         }
     }
 }

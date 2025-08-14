@@ -13,6 +13,8 @@ import java.net.InetSocketAddress
 fun main() {
     val base = MinestomBase.createServer()
 
+    MojangAuth.init()
+
     MinecraftServer.getCommandManager().register(GiveItemStackCommand())
     // test instance
     val instanceContainer = MinecraftServer.getInstanceManager().createInstanceContainer().apply {

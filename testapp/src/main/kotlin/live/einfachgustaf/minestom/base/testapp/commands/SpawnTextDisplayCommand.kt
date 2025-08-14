@@ -1,5 +1,6 @@
 package live.einfachgustaf.minestom.base.testapp.commands
 
+import live.einfachgustaf.minestom.base.display.textDisplay
 import net.kyori.adventure.text.Component
 import net.minestom.server.command.builder.Command
 import net.minestom.server.component.DataComponents
@@ -24,13 +25,13 @@ class SpawnTextDisplayCommand: Command("spawntextdisplay") {
             }
              */
 
-            val instance = sender.instance
-            val position = sender.position
-            val entity = EntityCreature(EntityType.TEXT_DISPLAY)
+            val playerInstance = sender.instance
+            val playerPosition = sender.position
 
-            entity.set(DataComponents.CUSTOM_NAME, Component.text("TextDisplay"))
-
-            entity.setInstance(instance, position) // actually spawning a horse
+            textDisplay(playerInstance) {
+                position = playerPosition
+                text = Component.text("Hello, this is a Text Display!")
+            }
 
             sender.sendMessage("Text display spawned!")
         }

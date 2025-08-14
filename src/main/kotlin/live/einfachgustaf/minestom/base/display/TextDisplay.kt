@@ -6,6 +6,7 @@ import net.minestom.server.component.DataComponents
 import net.minestom.server.entity.Entity
 import net.minestom.server.entity.EntityType
 import net.minestom.server.coordinate.Pos
+import net.minestom.server.entity.metadata.display.TextDisplayMeta
 import net.minestom.server.instance.Instance
 
 class TextDisplayBuilder(private val instance: Instance) {
@@ -14,7 +15,9 @@ class TextDisplayBuilder(private val instance: Instance) {
 
     fun build(): Entity {
         val entity = Entity(EntityType.TEXT_DISPLAY)
-        entity.set(DataComponents.CUSTOM_NAME, text)
+        entity.editEntityMeta(TextDisplayMeta::class.java) {
+            it.text = text
+        }
         return entity
     }
 }
@@ -22,8 +25,12 @@ class TextDisplayBuilder(private val instance: Instance) {
 fun textDisplay(
     instance: Instance,
     init: TextDisplayBuilder.() -> Unit
-) {
+): TextDisplayBuilder {
     val builder = TextDisplayBuilder(instance)
     builder.init()
-    builder.build().setInstance(instance, builder.position)
+    builder.build().let {
+        it.setInstance(instance, builder.position)
+        it.spawn()
+    }
+    return builder
 }

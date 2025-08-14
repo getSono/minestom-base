@@ -2,6 +2,7 @@ package live.einfachgustaf.minestom.base.testapp
 
 import live.einfachgustaf.minestom.base.MinestomBase
 import live.einfachgustaf.minestom.base.testapp.commands.GiveItemStackCommand
+import live.einfachgustaf.minestom.base.testapp.commands.SpawnTextDisplayCommand
 import net.minestom.server.MinecraftServer
 import net.minestom.server.coordinate.Pos
 import net.minestom.server.event.player.AsyncPlayerConfigurationEvent
@@ -10,10 +11,19 @@ import net.minestom.server.instance.LightingChunk
 import net.minestom.server.instance.block.Block
 import java.net.InetSocketAddress
 
+
 fun main() {
     val base = MinestomBase.createServer()
 
-    MinecraftServer.getCommandManager().register(GiveItemStackCommand())
+    MojangAuth.init()
+
+    listOf(
+        GiveItemStackCommand(),
+        SpawnTextDisplayCommand()
+    ).forEach {
+        MinecraftServer.getCommandManager().register(it)
+    }
+
     // test instance
     val instanceContainer = MinecraftServer.getInstanceManager().createInstanceContainer().apply {
         // grass layer

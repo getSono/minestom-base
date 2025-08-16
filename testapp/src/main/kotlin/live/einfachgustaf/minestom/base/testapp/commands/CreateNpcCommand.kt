@@ -8,7 +8,6 @@ import net.minestom.server.command.builder.Command
 class CreateNpcCommand: Command("createnpc") {
 
     init {
-        // Define the command's behavior here
         setDefaultExecutor { sender, _ ->
 
             if (sender !is net.minestom.server.entity.Player) {

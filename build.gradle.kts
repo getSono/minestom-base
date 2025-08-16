@@ -31,4 +31,21 @@ publishing {
             from(components["java"])
         }
     }
+
+    /*
+    repositories {
+        maven {
+            url = uri("https://gl.einfachgustaf.live/api/v4/projects/14/packages/maven")
+
+            credentials(HttpHeaderCredentials::class) {
+                name = "egl-gitlab_maven"
+                value =
+                    findProperty("egl-gitlab_maven") as String? // the variable resides in $GRADLE_USER_HOME/gradle.properties
+            }
+            authentication {
+                create("header", HttpHeaderAuthentication::class)
+            }
+        }
+    }
+     */
 }

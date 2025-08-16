@@ -9,6 +9,7 @@ repositories {
 
 dependencies {
     implementation(project(":"))
+    implementation("io.github.juliarn", "npc-lib-minestom", "3.0.0-beta13")
 }
 
 kotlin {

@@ -1,6 +1,7 @@
 package live.einfachgustaf.minestom.base.testapp
 
 import live.einfachgustaf.minestom.base.MinestomBase
+import live.einfachgustaf.minestom.base.testapp.commands.CreateNpcCommand
 import live.einfachgustaf.minestom.base.testapp.commands.GiveItemStackCommand
 import net.minestom.server.MinecraftServer
 import net.minestom.server.coordinate.Pos
@@ -15,7 +16,7 @@ fun main() {
 
     MojangAuth.init()
 
-    MinecraftServer.getCommandManager().register(GiveItemStackCommand())
+    MinecraftServer.getCommandManager().register(GiveItemStackCommand(), CreateNpcCommand())
     // test instance
     val instanceContainer = MinecraftServer.getInstanceManager().createInstanceContainer().apply {
         // grass layer

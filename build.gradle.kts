@@ -19,6 +19,9 @@ dependencies {
     api("org.slf4j", "slf4j-api", "2.0.17")
     implementation("ch.qos.logback", "logback-classic", "1.5.18")
     implementation("org.fusesource.jansi", "jansi", "2.4.2")
+
+    implementation("net.scrayos", "agones-client-sdk", "5.1.2")
+    runtimeOnly("io.grpc", "grpc-netty", "1.75.0")
 }
 
 kotlin {

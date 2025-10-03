@@ -10,4 +10,8 @@ class AgonesAdapter(val minecraftServer: MinecraftServer) {
     fun initialize() {
         AgonesListener(agonesSdk, minecraftServer)
     }
+
+    suspend fun setPlayerCapacity(capacity: Long) {
+        agonesSdk.alpha().playerCapacity(capacity)
+    }
 }

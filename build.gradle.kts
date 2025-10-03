@@ -15,6 +15,7 @@ repositories {
 dependencies {
     api("net.minestom", "minestom", "2025.08.12-1.21.8")
     api("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.10.2")
+    api("com.github.shynixn.mccoroutine", "mccoroutine-minestom-api", "2.22.0")
     api("com.github.shynixn.mccoroutine", "mccoroutine-minestom-core", "2.22.0")
     api("org.slf4j", "slf4j-api", "2.0.17")
     implementation("ch.qos.logback", "logback-classic", "1.5.18")

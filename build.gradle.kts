@@ -23,6 +23,12 @@ dependencies {
 
     implementation("net.scrayos", "agones-client-sdk", "5.1.2")
     runtimeOnly("io.grpc", "grpc-netty", "1.75.0")
+
+    // Ktor for Open Match HTTP endpoints
+    implementation("io.ktor", "ktor-server-core", "3.0.3")
+    implementation("io.ktor", "ktor-server-netty", "3.0.3")
+    implementation("io.ktor", "ktor-server-content-negotiation", "3.0.3")
+    implementation("io.ktor", "ktor-serialization-kotlinx-json", "3.0.3")
 }
 
 kotlin {
